@@ -4,7 +4,7 @@
   "description": "JSDoc 3 template using the Materialize CSS framework",
   "homepage": "https://github.com/duggum/jsdoc-materialize",
   "bugs": "https://github.com/duggum/jsdoc-materialize/issues",
-  "license": "MIT",
+  "license": "GPL-3.0+",
   "files": [
     "./template",
     "README.md"

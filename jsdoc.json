@@ -1,24 +1,3 @@
-/*
- * Project:     jsdoc-materialize
- * Description: A JSDoc 3 template using the Materialize CSS framework.
- * File:        jsdoc.json
- *
- * Copyright (C) 2016 David Jopson <https://duggum.com>
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 {
   "tags": {
     "allowUnknownTags": true,
@@ -27,7 +6,7 @@
   "source": {
     "include": [ "test" ],
     "includePattern": ".+\\.js(doc)?$",
-    "exclude": [ "src", "node_modules", "test/static" ],
+    "exclude": [ "template", "node_modules", "test/static" ],
     "excludePattern": "(^|\\/|\\\\)_"
   },
   "plugins": [
@@ -50,9 +29,9 @@
     },
     "applicationName": "jsdoc-materialize",
     "meta": {
-      "title"       : "jsdoc-materialize",
+      "title"       : "JSDoc Materialize",
       "description" : "A JSDoc 3 template using the Materialize CSS framework.",
-      "keyword"     : "jsdoc, jsdoc3, materialize, template"
+      "keyword"     : "jsdoc, jsdoc3, template, material, materialize"
     },
     "linenums": true
   },

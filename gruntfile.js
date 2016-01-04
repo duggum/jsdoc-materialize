@@ -1,29 +1,28 @@
 module.exports = function(grunt) {
   "use strict";
+  var srcDir = "template";
   var distDir = "dist/jsdoc-materialize";
-  var distDirJS = distDir + "/static/js";
-  var distDirCSS = distDir + "/static/css";
-  var distDirTmpl = distDir + "/tmpl";
-  var rawDir = distDir + "/raw";
-  var rawDirJS = rawDir + "/js";
-  var rawDirCSS = rawDir + "/css";
-  var rawDirTmpl = rawDir + "/tmpl";
-  var cssConcat = rawDirCSS + "/concat/combined.css";
-  var cssMinified = distDirCSS + "/modpe-api.min.css";
-  var jsMinified = distDirJS + "/modpe-api.min.js";
+  var cssDir = "/static/css";
+  var fontDir = "/static/font";
+  var imgDir = "/static/img";
+  var jsDir = "/static/js";
+  var tmplDir = "/tmpl";
+  var cssConcat = srcDir + cssDir + "/concat/combined.css";
+  var cssMinified = distDir + cssDir + "/jsdoc-materialize.min.css";
+  var jsMinified = distDir + jsDir + "/jsdoc-materialize.min.js";
+  var pkgJSON = grunt.file.readJSON("package.json");
+  var materializeVersion = pkgJSON.devDependencies["materialize-css"].replace("^", "");
   var config = {
-    pkg: grunt.file.readJSON("package.json"),
+    pkg: pkgJSON,
     clean: [
-      "./docs",
-      "./test-docs",
       cssConcat,
-      distDirCSS + "/*",
-      distDirJS + "/*"
+      "./dist",
+      "./test/docs"
     ],
     concat: {
       css: {
         files: [
-          { src: rawDirCSS + "/*.css", dest: cssConcat }
+          { src: srcDir + cssDir + "/*.css", dest: cssConcat }
         ]
       }
     },
@@ -31,17 +30,49 @@ module.exports = function(grunt) {
       css: {
         files: [{
           expand: true,
-          cwd: rawDirCSS,
+          cwd: srcDir + cssDir,
           src: [ "*.css" ],
-          dest: distDirCSS
+          dest: distDir + cssDir
+        }]
+      },
+      font: {
+        files: [{
+          expand: true,
+          cwd: srcDir + fontDir,
+          src: [ "**/*" ],
+          dest: distDir + fontDir
+        }]
+      },
+      img: {
+        files: [{
+          expand: true,
+          cwd: srcDir + imgDir,
+          src: [ "**/*" ],
+          dest: distDir + imgDir
         }]
       },
       js: {
         files: [{
           expand: true,
-          cwd: rawDirJS,
+          cwd: srcDir + jsDir,
           src: [ "*.js" ],
-          dest: distDirJS
+          dest: distDir + jsDir
+        }]
+      },
+      main: {
+        files: [{
+          expand: true,
+          cwd: srcDir,
+          src: [ "publish.js" ],
+          dest: distDir
+        }]
+      },
+      tmpl: {
+        files: [{
+          expand: true,
+          cwd: srcDir + tmplDir,
+          src: [ "*.tmpl", "!layout.tmpl" ],
+          dest: distDir + tmplDir
         }]
       }
     },
@@ -58,18 +89,10 @@ module.exports = function(grunt) {
     },
     jsdoc: {
       dist: {
-        src: ["./src"],
-        jsdoc: "./node_modules/.bin/jsdoc --verbose",
-        options: {
-          destination: "./docs",
-          configure: "jsdoc.json"
-        }
-      },
-      test: {
         src: ["./test"],
         jsdoc: "./node_modules/.bin/jsdoc --verbose",
         options: {
-          destination: "./test-docs",
+          destination: "./test/docs",
           configure: "jsdoc.json"
         }
       }
@@ -79,13 +102,13 @@ module.exports = function(grunt) {
         options: {
           data: { materialize: "materialize.css" }
         },
-        files: [{ src: rawDirTmpl + "/layout.tmpl", dest: distDirTmpl + "/layout.tmpl" }]
+        files: [{ src: srcDir + tmplDir + "/layout.tmpl", dest: distDir + tmplDir + "/layout.tmpl" }]
       },
       dist: {
         options: {
           data: { materialize: "materialize.min.css" }
         },
-        files: [{ src: rawDirTmpl + "/layout.tmpl", dest: distDirTmpl + "/layout.tmpl" }]
+        files: [{ src: srcDir + tmplDir + "/layout.tmpl", dest: distDir + tmplDir + "/layout.tmpl" }]
       }
     },
     sass: {
@@ -94,14 +117,14 @@ module.exports = function(grunt) {
           sourceMap: false,
           outputStyle: "expanded"
         },
-        files: [{ src: "materialize-src/sass/materialize.scss", dest: distDirCSS + "/materialize.css" }]
+        files: [{ src: "materialize-src/sass/materialize.scss", dest: distDir + cssDir + "/materialize.css" }]
       },
       dist: {
         options: {
           sourceMap: true,
           outputStyle: "compressed"
         },
-        files: [{ src: "materialize-src/sass/materialize.scss", dest: distDirCSS + "/materialize.min.css" }]
+        files: [{ src: "materialize-src/sass/materialize.scss", dest: distDir + cssDir + "/materialize.min.css" }]
       }
     },
     uglify: {
@@ -112,7 +135,7 @@ module.exports = function(grunt) {
         screwIE8: true
       },
       dist: {
-        files: [{ src: rawDirJS + "/*.js", dest: jsMinified }]
+        files: [{ src: srcDir + jsDir + "/*.js", dest: jsMinified }]
       }
     }
   };
@@ -128,31 +151,21 @@ module.exports = function(grunt) {
     "grunt-sass"
   ];
 
-  var cleanTasks = [
-    "clean"
-  ];
-
   var devTasks = [
+    "clean",
     "sass:dev",
     "processhtml:dev",
-    "copy:css",
-    "copy:js"
+    "copy"
   ];
 
   var distTasks = [
+    "clean",
     "sass:dist",
     "concat:css",
     "cssmin",
     "uglify",
-    "processhtml:dist"
-  ];
-
-  var docTasks = [
-    "jsdoc:dist"
-  ];
-
-  var testTasks = [
-    "jsdoc:test"
+    "processhtml:dist",
+    "copy"
   ];
 
   // initialize configuration
@@ -164,11 +177,10 @@ module.exports = function(grunt) {
   });
 
   // Definitions of tasks
-  grunt.registerTask("jsdoc-clean", cleanTasks);
-  grunt.registerTask("jsdoc-dev", cleanTasks.concat(devTasks.concat(docTasks)));
-  grunt.registerTask("jsdoc-dist", cleanTasks.concat(distTasks.concat(docTasks)));
-  grunt.registerTask("jsdoc-test", cleanTasks.concat(devTasks.concat(testTasks)));
+  grunt.registerTask("dev", devTasks);
+  grunt.registerTask("dist", distTasks);
+  grunt.registerTask("test", devTasks.concat("jsdoc:dist"));
 
   // Default task
-  grunt.registerTask("default", "jsdoc-dev");
+  grunt.registerTask("default", "test");
 };
