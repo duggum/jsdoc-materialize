@@ -1,52 +1,74 @@
+/*
+ * Project:     jsdoc-materialize
+ * Description: A JSDoc 3 template using the Materialize CSS framework.
+ * File:        jsdoc.json
+ *
+ * Copyright (C) 2016 David Jopson <https://duggum.com>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 {
-	"tags": {
-		"allowUnknownTags": true,
-		"dictionaries": ["jsdoc"]
-	},
-	"source": {
-		"includePattern": ".+\\.js(doc)?$",
-		"exclude": [ "src/static", "src/jsdoc" ],
-		"excludePattern": "(^|\\/|\\\\)_"
-	},
-	"plugins": [
-		"plugins/markdown"
-	],
-	"markdown": {
-		"parser": "marked",
-		"tags": ["example", "see"]
-	},
-	"templates": {
-		"cleverLinks": false,
-		"monospaceLinks": false,
-		"default": {
-			"outputSourceFiles": true,
-			"staticFiles": {
-				"paths": [
-					"test/static"
-				]
-			}
-		},
-		"applicationName": "ModPE API",
-		"meta": {
-			"title"       : "ModPE API",
-			"description" : "Documentation for the ModPE API",
-			"keyword"     : "modpe, minecraft, pocket, edition, mcpe, blocklauncher, block, launcher"
-		},
-		"linenums": true
-	},
-	"opts": {
-		"template"  : "dist/jsdoc-materialize",
-		"encoding"  : "utf8",
-		"private"   : true,
-		"recurse"   : true,
-		"readme"    : "test/README.md",
-		"tutorials" : "test/tutorials",
-		"mdPages"		: [
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": ["jsdoc"]
+  },
+  "source": {
+    "include": [ "test" ],
+    "includePattern": ".+\\.js(doc)?$",
+    "exclude": [ "src", "node_modules", "test/static" ],
+    "excludePattern": "(^|\\/|\\\\)_"
+  },
+  "plugins": [
+    "plugins/markdown"
+  ],
+  "markdown": {
+    "parser": "marked",
+    "tags": ["example", "see"]
+  },
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false,
+    "default": {
+      "outputSourceFiles": true,
+      "staticFiles": {
+        "paths": [
+          "test/static"
+        ]
+      }
+    },
+    "applicationName": "jsdoc-materialize",
+    "meta": {
+      "title"       : "jsdoc-materialize",
+      "description" : "A JSDoc 3 template using the Materialize CSS framework.",
+      "keyword"     : "jsdoc, jsdoc3, materialize, template"
+    },
+    "linenums": true
+  },
+  "opts": {
+    "template"  : "dist/jsdoc-materialize",
+    "encoding"  : "utf8",
+    "private"   : true,
+    "recurse"   : true,
+    "readme"    : "test/README.md",
+    "tutorials" : "test/tutorials",
+    "mdPages"   : [
       "./test/pages/contribute.md",
       "./test/pages/credits.md",
       "./test/pages/todo.md",
       "./test/pages/changelog.md",
       "./test/pages/license.md"
-		]
-	}
+    ]
+  }
 }

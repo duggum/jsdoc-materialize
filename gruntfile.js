@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
   "use strict";
-  var distDir = "src/jsdoc/template/materialize";
+  var distDir = "dist/jsdoc-materialize";
   var distDirJS = distDir + "/static/js";
   var distDirCSS = distDir + "/static/css";
   var distDirTmpl = distDir + "/tmpl";

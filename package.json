@@ -1,15 +1,15 @@
 {
   "name": "jsdoc-materialize",
   "version": "0.0.1",
-  "description": "JSDoc 3 template using Materialize CSS",
+  "description": "JSDoc 3 template using the Materialize CSS framework",
   "homepage": "https://github.com/duggum/jsdoc-materialize",
   "bugs": "https://github.com/duggum/jsdoc-materialize/issues",
   "license": "MIT",
   "files": [
-    "./src",
+    "./template",
     "README.md"
   ],
-  "main": "gruntfile.js",
+  "main": "template/publish.js",
   "author": {
     "name": "Dave Jopson",
     "email": "duggum@duggum.com",
@@ -20,7 +20,6 @@
     "url": "https://github.com/duggum/jsdoc-materialize.git"
   },
   "dependencies": {
-    "materialize-css": "^0.97.5"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -34,8 +33,7 @@
     "grunt-sass": "^1.1.0",
     "hisrc": "^2.0.0",
     "jsdoc": "^3.4.0",
-    "node-sass": "^3.4.2",
-    "taffydb": "^2.7.2",
-    "underscore": "^1.7.0"
+    "materialize-css": "^0.97.5",
+    "node-sass": "^3.4.2"
   }
 }
