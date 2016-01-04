@@ -1,0 +1,431 @@
+/**
+ *
+ * @namespace   Hooks
+ * @description Callback functions for the ModPE API. These functions are used to
+ *              execute other code when certain game events occur.
+ *
+ *////
+
+/**
+ *
+ * @instance
+ * @memberof    Hooks
+ * @function    attackHook
+ * @description Callback function that is called when an entity is attacked.
+ *
+ * @param {long} attacker - the attacker's native entity ID
+ * @param {long} victim   - the victim's native entity ID
+ *
+ * @example
+ * <caption>Credit: {@link https://goo.gl/4FYd5w|Connor4898}</caption>
+ *
+ * // who is attacking who?
+ * function attackHook(attacker, victim) {
+ *   if (attacker == Player.getEntity()) {
+ *     clientMessage("Sir, you shouldn't attack others.");
+ *   } else {
+ *     clientMessage("Sir, you are under attack!");
+ *   }
+ * }
+ *
+ *////
+
+/**
+ *
+ * @instance
+ * @memberof    Hooks
+ * @function    blockEventHook
+ * @description Callback function that is called when a chest is opened or closed.
+ *
+ * @param {int} x    - the chest's x coordiante
+ * @param {int} y    - the chest's y coordiante
+ * @param {int} z    - the chest's z coordiante
+ * @param {int} type - the event type (seems to always be 1)
+ * @param {int} data - the open/close data (0 = closing, 1 = open)
+ *
+ * @example
+ * // Announce the opening of a chest
+ * function blockEventHook(x, y, z, eventType, data) {
+ *   if (data === 1) {
+ *     clientMessage("A chest was opened at location " + x + " : " + y + " : " + z);
+ *   } else if (data === 0) {
+ *     clientMessage("The chest has been closed");
+ *   }
+ * }
+ *
+ *////
+
+/**
+ *
+ * @instance
+ * @memberof    Hooks
+ * @function    chatHook
+ * @description Callback function that is called when a chat message is sent.
+ *
+ * @param {string} str - the message text
+ *
+ * @example
+ * // repeat after me
+ * function chatHook(str) {
+ *   clientMessage(ChatColor.RED + str);
+ * }
+ *
+ *////
+
+/**
+ *
+ * @instance
+ * @memberof    Hooks
+ * @function    chatReceiveHook
+ * @description Callback function that is called when a chat message is received.
+ *
+ * @param {string} str    - the message text
+ * @param {string} sender - the sender of the message
+ *
+ * @example
+ * // who said that?
+ * function chatReceiveHook(str, sender) {
+ *   clientMessage(ChatColor.RED + sender + " says: " + str);
+ * }
+ *
+ *////
+
+/**
+ *
+ * @instance
+ * @memberof    Hooks
+ * @function    deathHook
+ * @description Callback function that is called when an entity dies.
+ *
+ * @param {int} attacker - the attacker's native entity ID
+ * @param {int} victim   - the victim's native entity ID
+ *
+ * @example
+ * <caption>Credit: {@link https://goo.gl/0ORrpq|Connor4898}</caption>
+ *
+ * // shame on you!
+ * function deathHook(attacker, victim) {
+ *   if (Player.getEntity() == attacker) {
+ *     clientMessage("How could you?!");
+ *   }
+ * }
+ *
+ *////
+
+/**
+ *
+ * @instance
+ * @memberof    Hooks
+ * @function    destroyBlock
+ * @description Callback function that is called when a block is destroyed.
+ *
+ * @param {int} x    - the x coordinate of the block
+ * @param {int} y    - the y coordinate of the block
+ * @param {int} z    - the z coordinate of the block
+ * @param {int} side - the side of the block that was targeted
+ *
+ * @example
+ * // let the world know a block was destroyed
+ * function destroyBlock(x, y, z, side) {
+ *   clientMessage("A block was destroyed at: " + x + ":" + y + ":" + z);
+ * }
+ *
+ *////
+
+/**
+ *
+ * @instance
+ * @memberof    Hooks
+ * @function    eatHook
+ * @description Callback function that is called when the player eats.
+ *
+ * @param {int}   foodPoints      - the number of half-drumsticks restored by the food item
+ * @param {float} saturationRatio - the level of saturation provided per food point
+ *
+ * @example
+ * // yummy food is yummy
+ * function eatHook(foodPoints, saturationRatio) {
+ *   clientMessage(
+ *     ChatColor.DARK_PURPLE +
+ *     "That yummy snack replenished " + foodPoints +
+ *     " half-drumsticks\nwith a saturation ratio of: " +
+ *     saturationRatio
+ *   );
+ * }
+ *
+ *////
+
+/**
+ *
+ * @instance
+ * @memberof    Hooks
+ * @function    entityAddedHook
+ * @description Callback function that is called when an entity is added to the world.
+ *              This includes arrows and falling blocks.
+ *
+ * @param {long} entity - the native entity id
+ *
+ * @example
+ * // enderman warning
+ * function entityAddedHook(entity) {
+ *   var entityType = Entity.getEntityTypeId(entity);
+ *   if (entityType === 38) {
+ *     clientMessage(ChatColor.RED + "Enderman in da house!");
+ *   }
+ * }
+ *
+ *////
+
+/**
+ *
+ * @instance
+ * @memberof    Hooks
+ * @function    entityRemovedHook
+ * @description Callback function that is called when an entity is despawns or dies.
+ *
+ * @param {long} entity - the native entity id
+ *
+ * @example
+ * // what a tragedy!
+ * function entityRemovedHook(entity) {
+ *   if (Entity.getEntityTypeId(entity) === 10) {
+ *     clientMessage("Another brave chicken has passed from this world.");
+ *   }
+ * }
+ *
+ *////
+
+/**
+ *
+ * @instance
+ * @memberof    Hooks
+ * @function    explodeHook
+ * @description Callback function that is called when an explosion occurs.
+ *
+ * @param {long}    entity - the native entity id of the entity that exploded
+ * @param {float}   x      - the x coordinate of the explosion
+ * @param {float}   y      - the y coordinate of the explosion
+ * @param {float}   z      - the z coordinate of the explosion
+ * @param {float}   radius - the radius of the explosion
+ * @param {boolean} onFire - whether or not the explosion caused a fire
+ *
+ * @example
+ * // explosion notification
+ * function explodeHook(entity, x, y, z, power, onFire) {
+ *   clientMessage(ChatColor.RED + "An explosion occured at " + x + " : " + y + " : " + z);
+ * }
+ *
+ *////
+
+/**
+ *
+ * @instance
+ * @memberof    Hooks
+ * @function    leaveGame
+ * @description Callback function that is called when the player exits a world (i.e., Quit to Title).
+ *
+ * @example
+ * // say goodbye on exit
+ * function leaveGame() {
+ *   print("Goodbye");
+ * }
+ *
+ *////
+
+/**
+ *
+ * @todo better example once this is working; broken in BL 1.11??
+ *
+ * @instance
+ * @memberof    Hooks
+ * @function    levelEventHook
+ * @description Callback function that is called when a door is opened or closed.
+ *
+ * @param {int} player    - the player entity that activated the door
+ * @param {int} eventType - the event type (seems to always be 1)
+ * @param {int} x         - the door's x coordiante
+ * @param {int} y         - the door's y coordiante
+ * @param {int} z         - the door's z coordiante
+ * @param {int} data      - the open/close data (0 = closing, 1 = opening, 2 = open)
+ *
+ * @example
+ * // Announce the opening of a door
+ * function levelEventHook(player, eventType, x, y, z, data) {
+ *   if (data === 1) {
+ *     clientMessage("A door was opened at location " + x + " : " + y + " : " + z);
+ *   } else if (data === 0) {
+ *     clientMessage("The door has been closed");
+ *   }
+ * }
+ *
+ *////
+
+/**
+ *
+ * @instance
+ * @memberof    Hooks
+ * @function    modTick
+ * @description Callback function that is called every game tick. A game tick
+ *              is 1/20 of a second, therefore there are 20 ticks in a second.
+ *
+ * @example
+ * // keep an eye on hunger level
+ * function modTick() {
+ *   if (Player.getHunger() < 5) {
+ *     clientMessage(ChatColor.RED + "Warning! You are getting very hungry!");
+ *   }
+ * }
+ *
+ *////
+
+/**
+ *
+ * @instance
+ * @memberof    Hooks
+ * @function    newLevel
+ * @description Callback function that is called when a game level is loaded
+ *
+ * @example
+ * // friendly welcome message
+ * function newLevel() {
+ *   clientMessage("Welcome to  Minecraft PE!!");
+ * }
+ *
+ *////
+
+/**
+ *
+ * @instance
+ * @memberof    Hooks
+ * @function    procCmd
+ * @description Callback function that is called when a chat command is issued.
+ *
+ * @param {string} cmd - the command without the leading slash (/)
+ *
+ * @example
+ * // quick heal
+ * function procCmd(cmd) {
+ *   if (cmd === "heal") {
+ *     Entity.setHealth(Player.getEntity(), 20);
+ *   }
+ * }
+ *
+ *////
+
+/**
+ *
+ * @todo  test this and try to figure it out
+ *
+ * @instance
+ * @memberof    Hooks
+ * @function    redstoneUpdateHook
+ * @description Callback function that is called when ???
+ *
+ * @param {int} x                        - the x coordinate of the block
+ * @param {int} y                        - the y coordinate of the block
+ * @param {int} z                        - the z coordinate of the block
+ * @param {int} newCurrent               - ???
+ * @param {boolean} someBooleanIDontKnow - ???
+ * @param {int} blockId                  - the ID of the block
+ * @param {int} blockData                - the damage/data for the block
+ *
+ * @example
+ * // code here
+ *
+ *////
+function redstoneUpdateHook(x, y, z, newCurrent, someBooleanIDontKnow, blockId, blockData) {}
+
+/**
+ *
+ * @instance
+ * @memberof    Hooks
+ * @function    selectLevelHook
+ * @description Callback function that is called when a game world is selected.
+ *              This allows you to run initialization code before the selected
+ *              world is fully loaded.
+ *
+ * @see See the example at {@link Block.defineBlock}
+ *
+ *////
+
+/**
+ *
+ * @instance
+ * @memberof    Hooks
+ * @function    serverMessageReceiveHook
+ * @description Callback function that is called when the server sends a chat message.
+ *
+ * @param {string} message - the message
+ *
+ * @example
+ * // announce a server message
+ * function serverMessageReceiveHook(message) {
+ *   clientMessage("Message from server: " + message);
+ * }
+ *
+ *////
+
+/**
+ *
+ * @todo confirm this - it doesn't seem to work in BL 1.11
+ *
+ * @instance
+ * @memberof    Hooks
+ * @function    startDestroyBlock
+ * @description Callback function function that is called when a block
+ *              starts being destroyed.
+ *
+ * @param {int} x    - the x coordinate of the block
+ * @param {int} y    - the y coordinate of the block
+ * @param {int} z    - the z coordinate of the block
+ * @param {int} side - the side of the block that was targeted
+ *
+ * @example
+ * // let the world know a block is being destroyed
+ * function startDestroyBlock(x, y, z, side) {
+ *   clientMessage("A block is being destroyed at: " + x + ":" + y + ":" + z);
+ * }
+ *
+ *////
+
+/**
+ *
+ * @instance
+ * @memberof    Hooks
+ * @function    useItem
+ * @description Callback function function that is called when an item is used
+ *              on a block.
+ *
+ * @param {int} x         - the x coordinate of the block
+ * @param {int} y         - the y coordinate of the block
+ * @param {int} z         - the z coordinate of the block
+ * @param {int} itemid    - the ID of the item used
+ * @param {int} blockid   - the ID of the block
+ * @param {int} blockSide - the side of the block that was tapped
+ * @param {int} itemData  - the damage/data for the item used
+ * @param {int} blockData - the damage/data for the block
+ *
+ * @example
+ * <caption>credit: {@link https://goo.gl/SdC24d|Zhuowei Zhang}</caption>
+ *
+ * // Super pickaxe: tap on a block with a diamond pickaxe to mine
+ * // a 11x11x11 square around/above it
+ * function useItem(x, y, z, itemId, blockId) {
+ *   if (itemId != 278) return; // if not diamond pickaxe exit the method
+ *   for (var xx = x - 5; xx <= x + 5; xx++) {
+ *     for (var zz = z - 5; zz <= z + 5; zz++) {
+ *       for (var yy = y; yy < y + 11; yy++) {
+ *         var tile = getTile(xx, yy, zz);
+ *         if (tile != 0) {
+ *           setTile(xx, yy, zz, 0);
+ *           if (tile != 1 && tile != 2 && tile != 3) { // not stone, grass, dirt
+ *             addItemInventory(tile, 1);
+ *           }
+ *         }
+ *       }
+ *     }
+ *   }
+ *   preventDefault();
+ * }
+ *
+ *////

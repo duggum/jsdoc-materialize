@@ -1,0 +1,52 @@
+{
+	"tags": {
+		"allowUnknownTags": true,
+		"dictionaries": ["jsdoc"]
+	},
+	"source": {
+		"includePattern": ".+\\.js(doc)?$",
+		"exclude": [ "src/static", "src/jsdoc" ],
+		"excludePattern": "(^|\\/|\\\\)_"
+	},
+	"plugins": [
+		"plugins/markdown"
+	],
+	"markdown": {
+		"parser": "marked",
+		"tags": ["example", "see"]
+	},
+	"templates": {
+		"cleverLinks": false,
+		"monospaceLinks": false,
+		"default": {
+			"outputSourceFiles": true,
+			"staticFiles": {
+				"paths": [
+					"test/static"
+				]
+			}
+		},
+		"applicationName": "ModPE API",
+		"meta": {
+			"title"       : "ModPE API",
+			"description" : "Documentation for the ModPE API",
+			"keyword"     : "modpe, minecraft, pocket, edition, mcpe, blocklauncher, block, launcher"
+		},
+		"linenums": true
+	},
+	"opts": {
+		"template"  : "dist/jsdoc-materialize",
+		"encoding"  : "utf8",
+		"private"   : true,
+		"recurse"   : true,
+		"readme"    : "test/README.md",
+		"tutorials" : "test/tutorials",
+		"mdPages"		: [
+      "./test/pages/contribute.md",
+      "./test/pages/credits.md",
+      "./test/pages/todo.md",
+      "./test/pages/changelog.md",
+      "./test/pages/license.md"
+		]
+	}
+}
