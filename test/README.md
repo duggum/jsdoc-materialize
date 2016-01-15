@@ -1,5 +1,3 @@
-## ModPE API Documentation
-
 #### [![Build Status](https://travis-ci.org/duggum/modpe-api.svg?branch=master)][travis] v0.0.3
 [travis]: https://travis-ci.org/duggum/modpe-api "Travis CI Build Status"
 
@@ -24,7 +22,7 @@ I am a bit of a geek who is new to MCPE and modding, or as my 8-year-old daughte
 
 There are lots of example mods, simple code samples, and incomplete API documentations out there, to be sure. Unfortunately, I found myself spending a lot of time just searching for the right bit of info or code example that would help me fully understand what `function foo()` does, or what the hell the parameter `par3double` *really* means. Anyway, I figured that the best way to learn the API was to document the damn thing, so here you go.
 
-The ultimate goal is to have every ModPE function fully documented, to include a full description of the function and its parameters, as well as meaningful code examples to demonstrate it's use. Additionally, I would like to have a library of tutorials where modding pros dig deep into some of the more advanced uses for the ModPE library.
+The ultimate goal is to have every ModPE function fully documented, to include a full description of the function and its parameters, meaningful code examples to demonstrate each function's use, and a library of tutorials where modding pros dig deep into some of the more advanced uses for the ModPE library.
 
 I am finding the task to be a bit daunting on my own, so feel free to help out.
 
@@ -42,5 +40,3 @@ Cheers!
 <a name="helpful-stuff"></a>
 ### Helpful Stuff
 - [Sublime Text Completions](https://gist.github.com/duggum/bce10dfa0adb49e71315)
-
-

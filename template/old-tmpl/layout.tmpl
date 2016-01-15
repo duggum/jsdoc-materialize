@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<?js
+if (env.conf.templates.meta) {
+  var siteTitle = env.conf.templates.meta.title || "JSDoc Materialize";
+  var siteDescription = env.conf.templates.meta.description || "A JSDoc 3 template using the Materialize CSS framework.";
+  var siteKeywords = env.conf.templates.meta.keyword || "jsdoc, jsdoc3, template, material, materialize";
+}
+?>
+  <title><?js= siteTitle ?></title>
+  <meta name="description" content="<?js= siteDescription ?>">
+  <meta name="keywords" content="<?js= siteKeywords ?>">
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" sizes="192x192" href="img/android-desktop.png">
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="<?js= siteTitle ?>">
+  <link rel="apple-touch-icon-precomposed" href="img/ios-desktop.png">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
+  <!-- build:template
+<link rel="stylesheet" href="css/<%= materialize %>"  media="screen,projection">
+/build -->
+  <!-- build:remove:dev -->
+  <link rel="stylesheet" href="css/modpe-api.min.css" media="screen,projection">
+  <!-- /build -->
+  <!-- build:remove:dist -->
+  <link rel="stylesheet" href="css/highlight-monokai-sublime.css" media="screen,projection">
+  <link rel="stylesheet" href="css/style.css" media="screen,projection">
+  <!-- /build -->
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <script src="js/modernizr.js"></script>
+<?js
+if (env.conf.templates) {
+?>
+  <script>
+    var config = <?js= JSON.stringify(env.conf.templates) ?> ;
+  </script>
+<?js
+}
+var appName = env.conf.templates.applicationName;
+?>
+</head>
+<body id="top" class="scrollspy">
+<?js= content ?>
+
+</body>
+</html>

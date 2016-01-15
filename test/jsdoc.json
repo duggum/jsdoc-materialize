@@ -1,0 +1,99 @@
+{
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": ["jsdoc"]
+  },
+  "source": {
+    "include": [ "test" ],
+    "includePattern": ".+\\.js(doc)?$",
+    "exclude": [ "template", "node_modules", "test/static" ],
+    "excludePattern": "(^|\\/|\\\\)_"
+  },
+  "plugins": [
+    "plugins/markdown"
+  ],
+  "markdown": {
+    "parser": "marked",
+    "tags": ["example", "see"]
+  },
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false,
+    "default": {
+      "outputSourceFiles": true,
+      "staticFiles": {
+        "paths": [
+          "test/static"
+        ]
+      }
+    },
+    "linenums": true
+  },
+  "opts": {
+    "encoding": "utf8",
+    "mainpagetitle": "ModPE Home",
+    "package": "test/package.json",
+    "private": true,
+    "readme": "test/README.md",
+    "recurse": true,
+    "tutorials": "test/tutorials"
+  },
+  "materialize": {
+    "app": {
+      "name": "JSDoc Materialize",
+      "url": "https://duggum.com/jsdoc-materialize",
+      "description": "A JSDoc 3 template using the Materialize CSS framework.",
+      "keywords": "jsdoc, jsdoc3, template, material, materialize, css",
+      "tagline": "The clean, colorful style of <a href='http://materializecss.com/' title='Materialize CSS'>Materialize CSS</a> meets <a href='http://usejsdoc.org/' title='JSDoc 3'>JSDoc 3</a>, the JavaScript API documentation generator."
+    },
+    "promo1": {
+        "icon": "mdi-action-favorite",
+        "caption": "Materialize CSS",
+        "text": "Materialize CSS does most of the heavy lifting for you by providing default stylings that incorporate easy to use custom components."
+      },
+    "promo2": {
+        "icon": "mdi-communication-phone",
+        "caption": "Simplifies",
+        "text": "By utilizing elements and principles of Google's Material Design, Materialize CSS provides a framework that focuses on User Experience."
+      },
+    "promo3": {
+        "icon": "&#64;",
+        "caption": "JSDoc 3",
+        "text": "JSDoc 3 is an API documentation generator for JavaScript, similar to JavaDoc or PHPDoc. You add documentation comments directly to your source code, right along side the code itself."
+      },
+    "author": {
+      "name": "Dave Jopson",
+      "url": "https://duggum.com"
+    },
+    "github": {
+      "user": "duggum",
+      "url": "https://github.com/duggum/jsdoc-materialize"
+    },
+    "isPackage": false,
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    },
+    "mdPages": [
+      {
+        "dir": "./test/pages1/",
+        "files": [
+          "contribute",
+          "credits",
+          "todo"
+        ]
+      },
+      {
+        "dir": "./test/pages2/",
+        "files": [
+          "changelog",
+          "license"
+        ]
+      }
+    ],
+    "custom": {
+      "mcpeVersion": "v0.13.1 alpha",
+      "blVersion": "v1.11.2"
+    }
+  }
+}

@@ -1,0 +1,202 @@
+<?js
+var data = obj;
+var self = this;
+var materialize = (typeof env.conf.materialize === "undefined") ? "undefined" : env.conf.materialize;
+var custom = (typeof env.conf.custom === "undefined") ? "undefined" : env.conf.custom;
+?>
+  <svg style="display:none;" preserveAspectRatio="xMidYMid meet" stroke-linejoin="round" stroke="none">
+    <symbol id="icon-cube-creeper" viewBox="0 0 56 64">
+      <path id="creeper-cube" d="M28.214,0.011l0.206,0.033l0.202,0.054l0.196,0.075l0.186,0.095l26.005,15l0.176,0.114l0.162,0.131l0.148,0.148l0.132,0.163l0.114,0.176l0.096,0.186l0.075,0.196l0.054,0.202l0.033,0.207l0.011,0.209l-0.011,0.209l-0.024,0.151l0,29.64l-0.011,0.209l-0.033,0.207l-0.054,0.202l-0.075,0.196l-0.095,0.186l-0.115,0.176l-0.131,0.163l-0.148,0.148l-0.163,0.131l-0.176,0.114l-25.762,14.86l-0.031,0.026l-0.176,0.114l-0.186,0.095l-0.196,0.075l-0.202,0.054l-0.206,0.033l-0.209,0.011l-0.019,-0.001l-0.018,0.001l-0.209,-0.011l-0.206,-0.033l-0.203,-0.054l-0.195,-0.075l-0.186,-0.095l-0.176,-0.114l-0.031,-0.026l-25.762,-14.86l-0.176,-0.114l-0.163,-0.131l-0.148,-0.148l-0.132,-0.163l-0.114,-0.176l-0.095,-0.186l-0.075,-0.196l-0.054,-0.202l-0.033,-0.207l-0.011,-0.209l0,-30l0.002,-0.037l-0.001,-0.034l0.006,-0.066l0.004,-0.072l0.006,-0.04l0.004,-0.038l0.012,-0.061l0.011,-0.068l0.011,-0.043l0.008,-0.04l0.018,-0.057l0.017,-0.062l0.017,-0.045l0.014,-0.043l0.022,-0.051l0.022,-0.057l0.023,-0.046l0.02,-0.044l0.026,-0.046l0.026,-0.05l0.03,-0.047l0.026,-0.045l0.029,-0.04l0.029,-0.044l0.038,-0.046l0.032,-0.044l0.031,-0.035l0.031,-0.038l0.045,-0.044l0.039,-0.043l0.032,-0.029l0.032,-0.032l0.052,-0.042l0.046,-0.041l0.033,-0.022l0.032,-0.026l0.06,-0.039l0.052,-0.037l0.032,-0.018l0.032,-0.02l26.004,-15l0.187,-0.095l0.195,-0.075l0.202,-0.054l0.207,-0.033l0.209,-0.011l0.209,0.011ZM4,45.845l21.97,12.672l0,-25.382l-17.19,-9.915l-4.78,-2.757l0,25.382ZM30.005,33.155l0,25.362l21.97,-12.672l0,-25.362l-21.97,12.672ZM6.003,17l4.776,2.755l17.208,9.926l22.002,-12.691l-21.984,-12.681l-22.002,12.691ZM32.554,34.858l5.889,-3.4l0,5.776l5.714,-3.414l0,-5.661l5.889,-3.4l0,5.661l-5.831,3.367l0,5.661l2.916,-1.683l0,7.882l-2.974,1.761l0,-3.478l-2.857,1.73l-2.857,1.65l0,3.511l-2.974,1.529l0,-8.907l2.915,-1.713l0,-4.53l-5.83,3.547l0,-5.889Z" />
+    </symbol>
+    <symbol id="icon-cube-grass" viewBox="68 0 56 64">
+      <path id="grass-cube" d="M96.209,0.011l0.207,0.033l0.202,0.054l0.195,0.075l0.186,0.095l26.005,15l0.176,0.114l0.163,0.131l0.148,0.148l0.132,0.163l0.114,0.176l0.095,0.186l0.075,0.196l0.054,0.202l0.033,0.207l0.011,0.209l-0.011,0.209l-0.024,0.151l0,29.64l-0.011,0.209l-0.033,0.207l-0.054,0.202l-0.075,0.196l-0.095,0.186l-0.114,0.176l-0.132,0.163l-0.148,0.148l-0.163,0.131l-0.176,0.114l-25.762,14.86l-0.031,0.026l-0.176,0.114l-0.186,0.095l-0.195,0.075l-0.203,0.054l-0.206,0.033l-0.209,0.011l-0.018,-0.001l-0.018,0.001l-0.209,-0.011l-0.207,-0.033l-0.202,-0.054l-0.196,-0.075l-0.186,-0.095l-0.176,-0.114l-0.031,-0.026l-25.762,-14.86l-0.176,-0.114l-0.163,-0.131l-0.148,-0.148l-0.132,-0.163l-0.114,-0.176l-0.095,-0.186l-0.075,-0.196l-0.054,-0.202l-0.033,-0.207l-0.011,-0.209l0,-30l0.002,-0.037l-0.001,-0.034l0.006,-0.066l0.004,-0.072l0.006,-0.04l0.004,-0.038l0.012,-0.061l0.011,-0.068l0.011,-0.043l0.009,-0.04l0.017,-0.057l0.017,-0.062l0.017,-0.045l0.014,-0.043l0.023,-0.051l0.021,-0.057l0.024,-0.046l0.019,-0.044l0.027,-0.046l0.025,-0.05l0.031,-0.047l0.025,-0.045l0.03,-0.04l0.028,-0.044l0.038,-0.046l0.032,-0.044l0.031,-0.035l0.031,-0.038l0.045,-0.044l0.039,-0.043l0.032,-0.029l0.032,-0.032l0.052,-0.042l0.047,-0.041l0.032,-0.022l0.032,-0.026l0.06,-0.039l0.053,-0.037l0.031,-0.018l0.032,-0.02l26.005,-15l0.186,-0.095l0.195,-0.075l0.202,-0.054l0.207,-0.033l0.209,-0.011l0.209,0.011ZM71.995,45.845l21.97,12.672l0,-25.382l-17.19,-9.915l-4.78,-2.757l0,25.382ZM98,33.155l0,25.362l21.97,-12.672l0,-25.362l-21.97,12.672ZM73.998,17l4.776,2.755l17.209,9.926l22.002,-12.691l-21.985,-12.681l-22.002,12.691Z" />
+      <path id="grass" fill="none" stroke-width="3px" d="M70.874,30.317l3.922,2.264l0,-5.661l3.922,2.265l0,6.793l3.922,2.265l0,-3.397l3.923,2.265l0,4.529l3.922,2.264l0,-6.793l4.903,2.83l0,-8.273l-24.514,-14.153l0,12.802ZM96.368,42.772l4.903,-2.831l0,-3.397l3.923,-2.264l0,6.793l3.922,-2.264l0,-3.397l3.922,-2.264l0,-3.397l3.922,-2.265l0,5.662l4.903,-2.831l0,-13.008l-25.781,14.923l0.286,10.54Z" />
+    </symbol>
+    <symbol id="icon-cube-bl" viewBox="136 0 56 64">
+      <path id="bl-cube" d="M164.203,0.011l0.207,0.033l0.202,0.054l0.195,0.075l0.187,0.095l26.005,15l0.176,0.114l0.163,0.131l0.148,0.148l0.132,0.163l0.114,0.176l0.095,0.186l0.075,0.196l0.054,0.202l0.033,0.207l0.011,0.209l-0.011,0.209l-0.024,0.151l0,29.64l-0.011,0.209l-0.033,0.207l-0.054,0.202l-0.075,0.196l-0.095,0.186l-0.114,0.176l-0.132,0.163l-0.148,0.148l-0.163,0.131l-0.176,0.114l-25.762,14.86l-0.031,0.026l-0.176,0.114l-0.186,0.095l-0.196,0.075l-0.202,0.054l-0.207,0.033l-0.209,0.011l-0.018,-0.001l-0.018,0.001l-0.209,-0.011l-0.207,-0.033l-0.202,-0.054l-0.195,-0.075l-0.187,-0.095l-0.175,-0.114l-0.031,-0.026l-25.763,-14.86l-0.176,-0.114l-0.163,-0.131l-0.148,-0.148l-0.132,-0.163l-0.114,-0.176l-0.095,-0.186l-0.075,-0.196l-0.054,-0.202l-0.033,-0.207l-0.011,-0.209l0,-30l0.002,-0.037l-0.001,-0.034l0.006,-0.066l0.004,-0.072l0.006,-0.04l0.004,-0.038l0.012,-0.061l0.011,-0.068l0.011,-0.043l0.008,-0.04l0.018,-0.057l0.017,-0.062l0.017,-0.045l0.014,-0.043l0.022,-0.051l0.022,-0.057l0.024,-0.046l0.019,-0.044l0.027,-0.046l0.025,-0.05l0.03,-0.047l0.026,-0.045l0.03,-0.04l0.028,-0.044l0.038,-0.046l0.032,-0.044l0.031,-0.035l0.031,-0.038l0.045,-0.044l0.039,-0.043l0.032,-0.029l0.032,-0.032l0.052,-0.042l0.047,-0.041l0.032,-0.022l0.032,-0.026l0.06,-0.039l0.053,-0.037l0.031,-0.018l0.032,-0.02l26.005,-15l0.187,-0.095l0.195,-0.075l0.202,-0.054l0.207,-0.033l0.209,-0.011l0.208,0.011ZM165.995,33.155l0,25.362l21.97,-12.672l0,-25.362l-21.97,12.672ZM139.989,45.845l21.971,12.672l0,-25.382l-17.191,-9.915l-4.78,-2.758l0,25.383ZM141.992,17l4.776,2.755l17.209,9.926l22.003,-12.691l-21.985,-12.681l-22.003,12.691ZM158.658,34.464l0,8.544l-1.781,-1.029l0,2.136l1.781,1.028l0,8.544l-14.658,-8.465l0,-19.222l14.658,8.464ZM149.404,45.139l2.982,1.723l0,-4.289l-2.982,-1.723l0,4.289ZM149.338,36.366l2.982,1.645l0,-4.003l-2.982,-1.645l0,4.003ZM176.19,31l0,13.442l8.81,-4.835l0,5.137l-15,8.256l0,-18.579l6.19,-3.421Z" />
+    </symbol>
+  </svg>
+  <header>
+    <!-- <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav waves-effect waves-light circle hide-on-large-only"><i class="mdi-navigation-menu"></i></a></div>
+    <ul id="nav-mobile" class="side-nav fixed">
+      <li class="logo">
+        <a id="logo-container" href="https://duggum.github.io/modpe-api/" class="brand-logo">
+          <object id="front-page-logo" type="image/svg+xml" data="img/material-logo.svg">Your browser does not support SVG</object>
+        </a>
+      </li>
+      <li class="search">
+        <div class="search-wrapper card">
+          <input id="search"><i class="material-icons">search</i>
+          <div class="search-results"></div>
+        </div>
+      </li>
+      <li class="bold"><a href="about.html" class="waves-effect waves-green">About</a></li>
+      <li class="bold"><a href="getting-started.html" class="waves-effect waves-green">Getting Started</a></li>
+      <li class="no-padding">
+        <ul class="collapsible collapsible-accordion">
+          <li class="bold"><a class="collapsible-header waves-effect waves-green">CSS</a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a href="color.html">Color</a></li>
+                <li><a href="grid.html">Grid</a></li>
+                <li><a href="helpers.html">Helpers</a></li>
+                <li><a href="media-css.html">Media</a></li>
+                <li><a href="sass.html">Sass</a></li>
+                <li><a href="shadow.html">Shadow</a></li>
+                <li><a href="table.html">Table</a></li>
+                <li><a href="typography.html">Typography</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="bold"><a class="collapsible-header waves-effect waves-green">Components</a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a href="badges.html">Badges</a></li>
+                <li><a href="buttons.html">Buttons</a></li>
+                <li><a href="breadcrumbs.html">Breadcrumbs</a></li>
+                <li><a href="cards.html">Cards</a></li>
+                <li><a href="chips.html">Chips</a></li>
+                <li><a href="collections.html">Collections</a></li>
+                <li><a href="footer.html">Footer</a></li>
+                <li><a href="forms.html">Forms</a></li>
+                <li><a href="icons.html">Icons</a></li>
+                <li><a href="navbar.html">Navbar</a></li>
+                <li><a href="pagination.html">Pagination</a></li>
+                <li><a href="preloader.html">Preloader</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="bold"><a class="collapsible-header waves-effect waves-green">JavaScript</a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a href="collapsible.html">Collapsible</a></li>
+                <li><a href="dialogs.html">Dialogs</a></li>
+                <li><a href="dropdown.html">Dropdown</a></li>
+                <li><a href="media.html">Media</a></li>
+                <li><a href="modals.html">Modals</a></li>
+                <li><a href="parallax.html">Parallax</a></li>
+                <li><a href="pushpin.html">Pushpin</a></li>
+                <li><a href="scrollfire.html">ScrollFire</a></li>
+                <li><a href="scrollspy.html">Scrollspy</a></li>
+                <li><a href="side-nav.html">SideNav</a></li>
+                <li><a href="tabs.html">Tabs</a></li>
+                <li><a href="transitions.html">Transitions</a></li>
+                <li><a href="waves.html">Waves</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li class="bold"><a href="http://materializecss.com/mobile.html" class="waves-effect waves-green">Mobile</a></li>
+      <li class="bold"><a href="showcase.html" class="waves-effect waves-green">Showcase</a></li>
+    </ul> -->
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper">
+          <a class="brand-logo" href="index.html">&nbsp;<?js= materialize.app.name || "App Name" ?></a>
+          <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="todo.html">To Do</a></li>
+            <li><a href="credits.html">Credits</a></li>
+            <li><a href="contribute.html">Contribute</a></li>
+          </ul>
+          <ul id="nav-mobile" class="side-nav hide-on-large-only">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="todo.html">To Do</a></li>
+            <li><a href="credits.html">Credits</a></li>
+            <li><a href="contribute.html">Contribute</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="section no-pad-bot" id="index-banner">
+      <div class="container valign-wrapper">
+        <div class="container valign">
+          <div class="row center">
+            <h4 class="header col s12 light center"><?js= materialize.app.description || "Description" ?></h4>
+          </div>
+          <div class="row center">
+            <a href="#" class="btn waves-effect waves-light">Read the Docs!</a>
+          </div>
+        </div>
+      </div>
+      <div class="github-commit">
+        <div class="commit center-align">
+          Latest Commit on Github: &nbsp;&nbsp;<a href="" class="sha"></a>&nbsp;&nbsp;<span class="date"></span>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="section">
+        <div class="row center">
+          <h3 class="header tagline"><?js= materialize.app.tagline ?></h3>
+        </div>
+        <!--   Promo Section   -->
+        <div class="row">
+          <div  class="col s12 m4 l4">
+            <div class="center promo">
+              <i class="<?js= materialize.promo1.icon ?>"></i>
+              <h5 class="promo-caption"><?js= materialize.promo1.caption ?></h5>
+              <p class="light center"><?js= materialize.promo1.text ?></p>
+            </div>
+          </div>
+          <div class="col s12 m4 l4">
+            <div class="center promo">
+              <i class="<?js= materialize.promo2.icon ?>"></i>
+              <h5 class="promo-caption"><?js= materialize.promo2.caption ?></h5>
+              <p class="light center"><?js= materialize.promo2.text ?></p>
+            </div>
+          </div>
+          <div class="col s12 m4 l4">
+            <div class="center promo">
+              <i class="plain-text"><?js= materialize.promo3.icon ?></i>
+              <h5 class="promo-caption"><?js= materialize.promo3.caption ?></h5>
+              <p class="light center"><?js= materialize.promo3.text ?></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="divider">
+      <div class="section">
+        <div class="row center showcase">
+          <h3 class="header">Demo</h3>
+          <p class="col s8 offset-s2 caption">Checkout the demo site, or visit some <a href="#">other sites</a> that are using this template!</p>
+        </div>
+        <div class="row center">
+          <a href="#" class="btn-large waves-effect waves-light">See the Demo!</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 l5">
+          <h5 class="white-text">Contribute</h5>
+          <p class="white-text light">Maintaining quality documentation isn't always a simple task, so feel free to <a href="contribute.html">help out</a>. There is always <a href="todo.html">plenty to do</a>.</p>
+        </div>
+        <div class="col s12 l5">
+          <h5 class="white-text">More Info</h5>
+          <p class="white-text light">You can put even more information here, or just get rid of this and adjust the column sizes!</p>
+        </div>
+        <div class="col s12 l2">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li><a href="<?js= materialize.github.url ?>" class="light">Github</a></li>
+            <li><a class="light" href="#!">Link 2</a></li>
+            <li><a class="light" href="#!">Link 3</a></li>
+            <li><a class="light" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        <span class="left white-text light"><a target="_blank" href="<?js= materialize.app.url ?>"><?js= materialize.app.name ?></a> &copy; <span id="cyear">2016</span> <a target="_blank" href="<?js= materialize.author.url ?>"><?js= materialize.author.name ?></a>. All rights reserved.</span>
+        <span class="right white-text light"><a target="_blank" rel="license" href="<?js= materialize.license.url  ?>"><?js= materialize.license.name ?> License</a></span>
+      </div>
+    </div>
+  </footer>

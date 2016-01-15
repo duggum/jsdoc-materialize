@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <?js
+  var materialize = env.conf.materialize;
+  var siteTitle = materialize.app.name;
+  var siteDescription = materialize.app.description;
+  var siteKeywords = materialize.app.keywords || "";
+?>
+    <title>
+      <?js= siteTitle ?>
+    </title>
+    <meta name="description" content="<?js= siteDescription ?>">
+    <meta name="keywords" content="<?js= siteKeywords ?>">
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="img/android-desktop.png">
+    <!--  Android 5 Chrome Color-->
+    <meta name="theme-color" content="#EE6E73">
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="<?js= siteTitle ?>">
+    <link rel="apple-touch-icon-precomposed" href="img/ios-desktop.png">
+    <!-- Windows application stuff -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/jsdoc-materialize.css">
+    <link rel="stylesheet" href="css/jm-additional.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css"> -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
+    <?js
+if (env.conf.templates) {
+?>
+    <script>
+        var config = <?js= JSON.stringify(env.conf.templates) ?>;
+    </script>
+<?js
+}
+?>
+</head>
+
+<body>
+  <?js= content ?>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.4.3/jquery.timeago.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/veinjs/0.3/vein.min.js"></script>
+    <!-- build:remove:dist -->
+    <script src="js/init.js"></script>
+    <script src="js/highlight.pack.js"></script>
+    <script src="js/hljs-line-numbers.js"></script>
+    <!-- /build -->    <script>
+    /* global hljs */
+    hljs.configure({
+      tabReplace: "  "
+    });
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+
+    window.onload = function() {
+      // cleanup any pretty print stuff from jsdoc
+      var preTags = document.getElementsByTagName("pre");
+      for (var t = 0; t < preTags.length; t++) {
+        preTags[t].removeAttribute("class");
+      }
+      // update copyright date
+      document.getElementById("cyear").innerHTML = new Date().getFullYear();
+    };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!--
+Project:     jsdoc-materialize
+Description: A JSDoc 3 template using the Materialize CSS framework.
+File:        steve-face.pretty.svg
+
+Copyright (C) 2016 David Jopson <https://duggum.com>
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<svg width="474" height="474" viewBox="0 0 474 474" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#B78471" d="M0 0h474v474H0z" />
+    <path d="M292 409H182v-53h-60v118h230V356h-60v53z" fill="#421B0E" />
+    <path fill="#6A3D2F" d="M182 303h110v53H182z" />
+    <path fill="#89473B" d="M182 356h110v53H182z" />
+    <path fill="#493682" d="M117.487 234.994h60.77v60.774h-60.77zm178.257 0h60.77v60.774h-60.77z" />
+    <path d="M56.718 234.994h60.77v60.774h-60.77v-60.774zm299.795 0h60.77v60.774h-60.77v-60.774z" fill="#FFF" />
+    <path d="M414.244 117.99H59.756V178H0V0h474v178h-59.756v-60.01z" fill="#2B1D0E" />
+  </g>
+</svg>
