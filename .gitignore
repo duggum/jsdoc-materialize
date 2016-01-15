@@ -1,5 +1,4 @@
 .tags*
 .tern*
-test/docs/**
+test/**
 node_modules/**
-Material_Theme/**
